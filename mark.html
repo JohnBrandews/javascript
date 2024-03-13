@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grading</title>
+</head>
+<body>
+    <button id="mybutton">click me</button>
+    <script>
+        var mark;
+        
+        function checkMark () {
+        mark = parseInt(window.prompt("Enter your marks"))
+        if(mark >= 70 && mark <= 100){
+            document.write("you got an A")
+        }
+        else if(mark >= 60 && mark <= 69){
+            document.write("you got a B")
+        }
+        
+        else if(mark >= 50 && mark <=59){
+            document.write("you got a C")
+        }
+        else if(mark >= 40 && mark <= 49){
+            document.write("you got a D")
+        }
+        else if(mark >= 0 && mark <= 39){
+            document.write("you got a F")
+        }
+    
+    else{
+        document.write("please enter a valid mark");
+    }
+}
+        document.getElementById("mybutton").onclick = checkMark;
+    </script>
+</body>
+</html>
