@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="one.css">
+    <title>Document</title>
+</head>
+<body>
+    <button id="myButton">click me</button>
+    <script>
+                var bill;
+                var total; 
+        function hospital () {
+        const consultationfee = 500;
+        bill = parseInt(window.prompt("enter your bill"))
+        total = bill + consultationfee
+        document.write("the bill is" + total)
+        }
+        document.getElementById("myButton").onclick = hospital; 
+        
+
+    </script>
+
+    <marquee direction="left"><img src="images/1.jpg"></marquee>
+</body>
+</html>
