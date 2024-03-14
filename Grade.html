@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Entry</title>
+    <style>
+        * {
+            background-color: #1b2223;
+            color: #f7f7f7;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .marks {
+            display: block;
+            text-align: center;
+            margin: auto;
+            width: 30%;
+        }
+        .marks .mark-entry-box {
+            background-color: #3a4f50;
+            border: none;
+            border-radius: 5px;
+            width: 80px;
+            margin-left: 15px;
+            margin-right: 15px;
+            text-align: center;
+        }
+        .marks button {
+            background-color: #0ef6cc;
+            color: #1b2223;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+        }
+        .marks button:hover {
+            background-color: #f4fefd;
+            color: #1b2223;
+            scale: 1.09;
+            transition: 5ms;
+        }
+    </style>
+</head>
+<body>
+    <div class="marks">
+        <div class="mark-title"><H1>Grading System</H1></div>
+        <label for="acsc261">ACSC 261</label>&nbsp;<input class="mark-entry-box" type="text" id="acsc261" placeholder="Enter marks">&nbsp;<label id="grade1"></label><br><br>
+        <label for="acsc226">ACSC 226</label>&nbsp;<input class="mark-entry-box" type="text" id="acsc226" placeholder="Enter marks">&nbsp;<label id="grade2"></label><br><br>
+        <label for="acsc231">ACSC 231</label>&nbsp;<input class="mark-entry-box" type="text" id="acsc231" placeholder="Enter marks">&nbsp;<label id="grade3"></label><br><br>
+        <label for="acsc225">ACSC 225</label>&nbsp;<input class="mark-entry-box" type="text" id="acsc225" placeholder="Enter marks">&nbsp;<label id="grade4"></label><br><br>
+        <label for="acsc272">ACSC 272</label>&nbsp;<input class="mark-entry-box" type="text" id="acsc272" placeholder="Enter marks">&nbsp;<label id="grade5"></label><br><br>
+        <label for="acsc273">ACSC 273</label>&nbsp;<input class="mark-entry-box" type="text" id="acsc273" placeholder="Enter marks">&nbsp;<label id="grade6"></label><br><br>
+        <button type="button" onclick="calculateAverage()">Average</button>
+        <label id="finalGrade"></label>
+    </div>
+
+    <script>
+        // Get all input fields and corresponding grade labels
+        const inputFields = document.querySelectorAll('input[type="text"]');
+        const gradeLabels = document.querySelectorAll('label[id^="grade"]');
+        const finalGradeLabel = document.getElementById('finalGrade');
+
+        // Loop through each input field and add an event listener
+        inputFields.forEach((inputField, index) => {
+            inputField.addEventListener('input', () => {
+                const marks = Number(inputField.value);
+                const gradeLabel = gradeLabels[index];
+
+                // Input validation
+                if (isNaN(marks) || marks < 0 || marks > 100) {
+                    gradeLabel.textContent = 'NA';
+                    return;
+                }
+
+                // Calculate and display the grade
+                if (marks >= 70 && marks <= 100) {
+                    gradeLabel.textContent = 'A';
+                } else if (marks >= 60 && marks <= 69) {
+                    gradeLabel.textContent = 'B';
+                } else if (marks >= 50 && marks <= 59) {
+                    gradeLabel.textContent = 'C';
+                } else if (marks >= 40 && marks <= 49) {
+                    gradeLabel.textContent = 'D';
+                } else {
+                    gradeLabel.textContent = 'F';
+                }
+            });
+        });
+
+        function calculateAverage() {
+            let totalMarks = 0;
+            let validMarksCount = 0;
+
+            inputFields.forEach(inputField => {
+                const marks = Number(inputField.value);
+                if (!isNaN(marks) && marks >= 0 && marks <= 100) {
+                    totalMarks += marks;
+                    validMarksCount++;
+                }
+            });
+
+            const average = Math.round(totalMarks / validMarksCount);
+            const finalGrade = calculateGrade(average);
+            finalGradeLabel.textContent = ( `Final Grade: ${average} ${finalGrade}`);
+        }
+
+        function calculateGrade(marks) {
+            if (marks >= 70 && marks <= 100) {
+                return 'A';
+            } else if (marks >= 60 && marks <= 69) {
+                return 'B';
+            } else if (marks >= 50 && marks <= 59) {
+                return 'C';
+            } else if (marks >= 40 && marks <= 49) {
+                return 'D';
+            } else {
+                return 'F';
+            }
+        }
+    </script>
+</body>
+</html>
