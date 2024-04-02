@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subdivided Page</title>
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      grid-template-rows: 100px 1fr 50px;
+      grid-gap: 10px;
+      height: 100vh;
+    }
+
+    .header {
+      grid-column: 1 / 3;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+
+    .sidebar {
+      background-color: #e0e0e0;
+      padding: 20px;
+    }
+
+    .main-content {
+      background-color: #d9d9d9;
+      padding: 20px;
+    }
+
+    .footer {
+      grid-column: 1 / 3;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="header">Header</div>
+    <div class="sidebar">Sidebar</div>
+    <div class="main-content">Main Content</div>
+    <div class="footer">Footer</div>
+  </div>
+</body>
+</html>
